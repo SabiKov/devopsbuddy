@@ -1,4 +1,4 @@
-package com.devopsbuddy.backend.persistance.domain.backend;
+package com.devopsbuddy.backend.persistence.domain.backend;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -14,9 +14,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    public User() {
-
-    }
+    public User() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -53,8 +51,6 @@ public class User implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "plan_id")
     private Plan plan;
-
-
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<UserRole> userRoles = new HashSet<>();
@@ -170,8 +166,6 @@ public class User implements Serializable {
     public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
     }
-
-
 
     @Override
     public boolean equals(Object o) {

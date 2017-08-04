@@ -1,4 +1,6 @@
-package com.devopsbuddy.backend.persistance.domain.backend;
+package com.devopsbuddy.backend.persistence.domain.backend;
+
+import com.devopsbuddy.enums.RolesEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,18 +21,16 @@ public class Role implements Serializable {
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<UserRole> userRoles = new HashSet<>();
 
-    public Role() {
-
-    }
+    public Role() { }
 
     /**
      * Full constructor.
      * @param //rolesEnum
      */
- /*   public Role(RolesEnum rolesEnum) {
+    public Role(RolesEnum rolesEnum) {
         this.id = rolesEnum.getId();
         this.name = rolesEnum.getRoleName();
-    }*/
+    }
 
     public int getId() {
         return id;
