@@ -60,8 +60,19 @@ public class User implements Serializable, UserDetails {
     @JoinColumn(name = "plan_id")
     private Plan plan;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     private Set<UserRole> userRoles = new HashSet<>();
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "user"
+    )
+    private Set<PasswordResetToken> passwordResetTokens = new HashSet<>();
 
     public long getId() {
         return id;
